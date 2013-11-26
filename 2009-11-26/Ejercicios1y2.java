@@ -78,6 +78,23 @@ public class Graph<V> {
         return -1;
     }
 
+    private class PQNode implements Comparable<PQNode>{
+        Node node;
+        int distance;
+
+        public PQNode(Node node, int distance){
+            this.node = node;
+            this.distance = distance;
+        }
+
+        public int compareTo(PQNode n){
+            return Integer.valueOf(distance).compareTo(o.distance);
+        }
+
+
+
+    }
+
 /* Ejercicio 2 */
     public int countCycles(V origin){
         clearMarks();
