@@ -90,9 +90,6 @@ public class Graph<V> {
         public int compareTo(PQNode n){
             return Integer.valueOf(distance).compareTo(o.distance);
         }
-
-
-
     }
 
 /* Ejercicio 2 */
@@ -105,6 +102,7 @@ public class Graph<V> {
         if(!origin.equals(current) ){
             if(previous != null) return 1;
         }
+        if(current.visited) return 0;
 
         int cycles = 0;
         current.visited = true;
