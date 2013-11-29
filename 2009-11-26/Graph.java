@@ -100,7 +100,7 @@ public class Graph<V> {
     }
 
     private int countCycles(Node current, Node previous, Node origin){
-        if(!origin.equals(current) ){
+        if( !origin.equals(current) ){
             if(previous != null) return 1;
         }
         if(current.visited) return 0;
