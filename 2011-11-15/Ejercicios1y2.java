@@ -1,8 +1,9 @@
-public class Graph<V> {
+public class Graph<V>{
     private HashMap<V, Node> nodes = new HashMap<V, Node>();
     private List<Node> nodeList = new ArrayList<Node>();
-    public void addVertex(V vertex) {
-        if (!nodes.containsKey(vertex)) {
+
+    public void addVertex(V vertex){
+        if (!nodes.containsKey(vertex)){
             Node node = new Node(vertex);
             nodes.put(vertex, node);
             nodeList.add(node);

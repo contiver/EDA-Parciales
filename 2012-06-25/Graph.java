@@ -2,20 +2,20 @@ public class Graph<V> {
     private HashMap<V, Node> nodes = new HashMap<V, Node>();
     private List<Node> nodeList = new ArrayList<Node>();
 
-    public void addVertex(V vertex) {
-        if (!nodes.containsKey(vertex)) {
+    public void addVertex(V vertex){
+        if (!nodes.containsKey(vertex)){
             Node node = new Node(vertex);
             nodes.put(vertex, node);
             nodeList.add(node);
         }
     }
 
-    public void addArc(V v, V w, int weight) {
+    public void addArc(V v, V w, int weight){
         Node origin = nodes.get(v);
         Node dest = nodes.get(w);
-        if (origin != null && dest != null && !origin.equals(dest)) {
-            for (Arc arc : origin.adj) {
-                if (arc.neighbor.info.equals(w)) {
+        if (origin != null && dest != null && !origin.equals(dest)){
+            for (Arc arc : origin.adj){
+                if (arc.neighbor.info.equals(w)){
                     return;
                 }
             }
@@ -24,31 +24,31 @@ public class Graph<V> {
         }
     }
 
-    private class Node {
+    private class Node{
         V info;
         boolean visited = false;
         List<Arc> adj = new ArrayList<Arc>();
 
-        public Node(V info) {
+        public Node(V info){
             this.info = info;
         }
 
-        public int hashCode() {
+        public int hashCode(){
             return info.hashCode();
         }
 
-        public boolean equals(Object obj) {
-            if (obj == null || obj.getClass() != getClass()) {
+        public boolean equals(Object obj){
+            if (obj == null || obj.getClass() != getClass()){
                 return false;
             }
             return info.equals(((Node)obj).info);
         }
     }
 
-    private class Arc {
+    private class Arc{
         int weight;
         Node neighbor;
-        public Arc(int weight, Node neighbor) {
+        public Arc(int weight, Node neighbor){
             this.weight = weight;
             this.neighbor = neighbor;
         }
@@ -74,17 +74,17 @@ public class Graph<V> {
 
     private boolean isDFS(Node current, Iterator<V> it){
         current.visited = true;
-        boolean unvisitedRemain = false;
+        boolean unvisitedNodesRemain = false;
         boolean valueNotFound = true;
 
         for(Arc arc : current.adj){
             if( !arc.neighbor.visited ){
-                unvisitedRemain = true;
+                unvisitedNodesRemain = true;
                 break;
             }
         }
 
-        while(unvisitedRemain){
+        while(unvisitedNodesRemain){
             if( !it.hasNext() ) return false;
 
             V nextValue = it.next();
@@ -95,10 +95,10 @@ public class Graph<V> {
                 }
             }
             if(valueNotFound) return false;
-            unvisitedRemain = false;
+            unvisitedNodesRemain = false;
             for(Arc arc : current adj){
                 if( !arc.neighbor.visited ){
-                    unvisitedRemain = true;
+                    unvisitedNodesRemain = true;
                     break;
                 }
             }

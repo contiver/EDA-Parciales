@@ -3,7 +3,7 @@ public class Graph<V> {
     private List<Node> nodeList = new ArrayList<Node>();
 
     public void addVertex(V vertex, int weight){
-        if (!nodes.containsKey(vertex)) {
+        if (!nodes.containsKey(vertex)){
             Node node = new Node(vertex, weight);
             nodes.put(vertex, node);
             nodeList.add(node);
@@ -14,8 +14,8 @@ public class Graph<V> {
         Node origin = nodes.get(v);
         Node dest = nodes.get(w);
         if (origin != null && dest != null && !origin.equals(dest)) {
-            for (Arc arc : origin.adj) {
-                if (arc.neighbor.info.equals(w)) {
+            for (Arc arc : origin.adj){
+                if (arc.neighbor.info.equals(w)){
                     return;
                 }
             }
@@ -30,6 +30,7 @@ public class Graph<V> {
         boolean visited = false;
         int tag = 0;
         List<Arc> adj = new ArrayList<Arc>();
+
         public Node(V info, int weight){
             this.info = info;
             this.weight = weight;
@@ -40,7 +41,7 @@ public class Graph<V> {
         }
 
         public boolean equals(Object obj){
-            if (obj == null || !(obj.getClass() != getClass())) {
+            if (obj == null || !(obj.getClass() != getClass())){
                 return false;
             }
             return info.equals(((Node)obj).info);
